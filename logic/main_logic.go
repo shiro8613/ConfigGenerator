@@ -1,6 +1,7 @@
 package logic
 
 import (
+	"fmt"
 	"path/filepath"
 
 	"github.com/shiro8613/ConfigGenerator/config"
@@ -25,17 +26,17 @@ func MainLogic() error {
 		}
 
 		for _, file := range files {
-			go func(file string) {
-				anyFile, _ := paser.InterfaceYamlPaser(file)
+			anyFile, _ := paser.InterfaceYamlPaser(file)
 
-				exportName := filepath.Base(file)
-				exportPath := v.ExportDir + "/" + exportName
+			exportName := filepath.Base(file)
+			exportPath := v.ExportDir + "/" + exportName
 
-				generatedY := YamlAppender(commonY, anyFile)
+			generatedY := YamlAppender(commonY, anyFile)
 
-				paser.InterfaceYamlExport(generatedY, exportPath)
-			}(file)
+			paser.InterfaceYamlExport(generatedY, exportPath)
 		}
+
+		fmt.Printf("%s Generated!\n", k)
 	}
 
 	if config.Stream.Enable {
