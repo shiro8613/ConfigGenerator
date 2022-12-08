@@ -16,7 +16,10 @@ func main() {
 		os.Exit(0)
 	}
 
-	log.Fatal(config.ImportConfig(flag_data.Config_path))
+	err := config.ImportConfig(flag_data.Config_path)
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	log.Fatal(logic.MainLogic())
 
