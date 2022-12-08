@@ -16,7 +16,7 @@ func InterfaceYamlPaser(path string) (HogeYaml, error) {
 		return nil, err
 	}
 
-	err = yaml.Unmarshal(b, hogeYaml)
+	err = yaml.Unmarshal(b, &hogeYaml)
 	if err != nil {
 		return nil, err
 	}
