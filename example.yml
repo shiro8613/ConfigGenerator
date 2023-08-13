@@ -1,0 +1,10 @@
+Generate:
+    dir-example:
+        Common: /dir/common.yml
+        AnyfileDir: /dir/any
+        ExportDir: /dir/export
+Stream:
+    Enable: true
+    Bind: 0.0.0.0:8000
+    Stream_conf:
+        - dir-example
